@@ -66,3 +66,73 @@
         Merge Array1 & Array2 to Array3
         Array3 = 9 8 8 7 6 6 5 3 3 3 2 2 1 1
 */
+
+#include <stdio.h>
+
+int main() {
+
+    int N1, N2, N3, num1[ 100 ], num2[ 100 ], num3[ 100 ], i, j, hold = 0 ;
+
+    printf( "Enter element of Array1 :\n" ) ;
+    scanf( "%d", &N1 ) ;
+
+    for ( i = 0 ; i < N1 ; i++ ) {
+        printf( "--| Array1 [%d] :", i ) ;
+        scanf( "%d", &num1[ i ] );
+    }
+
+    printf( "Enter element of Array2 :\n" ) ;
+    scanf( "%d", &N2 ) ;
+
+    for ( i = 0 ; i < N2 ; i++ ) {
+        printf( "--| Array1 [%d] :", i ) ;
+        scanf( "%d", &num2[ i ] );
+    }
+
+    for ( i = 0 ; i < N1 ; i++ ) {
+        for ( int j = i + 1 ; j < N1 ; j++ ) {
+            if ( num1[ i ] > num1[ j ] ) {
+                hold = num1[ j ] ;
+                num1[ j ] = num1[ i ] ;
+                num1[ i ] = hold ;
+            }
+        }
+    }
+
+    for ( i = 0 ; i < N2 ; i++ ) {
+        for ( int j = i + 1 ; j < N2 ; j++ ) {
+            if ( num2[ i ] > num2[ j ] ) {
+                hold = num2[ j ] ;
+                num2[ j ] = num2[ i ] ;
+                num2[ i ] = hold ;
+            }
+        }
+    }
+
+    N3 = N1 + N2 ;
+    for ( i = 0 ; i < N1 ; i++ ) {
+    num3[ i ] = num1[ i ];
+    }
+
+    for ( i = 0; i < N2; i++ ) {
+        num3[i + N1] = num2[ i ] ;
+    }
+
+
+    for ( i = 0; i < N3; i++) {
+        for (int j = i + 1 ; j < N3 ; j++) {
+            if ( num3[ i ] < num3[ j ]) {
+                hold = num3[ i ] ;
+                num3[ i ] = num3[ j ] ;
+                num3 [ j ] = hold ;
+            }
+        }
+    }
+    printf( "Merge Array1 & Array2 to Array3\n" ) ;
+    printf( "Array3 😊 " );
+    for ( int i = 0; i < N3; i++ ) {
+        printf( " %d",num3[ i ] ) ;
+    }
+
+    return 0;
+}
